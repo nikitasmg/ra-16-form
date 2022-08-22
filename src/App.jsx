@@ -1,7 +1,7 @@
 import './App.css'
 
 import React from 'react';
-import TrainingList from "./components/trainingList/TrainingList.jsx";
+import TrainingList from "./components/Training/trainingList/TrainingList.jsx";
 
 const App = () => {
     return (

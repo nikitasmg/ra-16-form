@@ -23,7 +23,7 @@ const Form = styled.form`
   margin-bottom: 40px;
 `
 
-const BorderedInput = styled(InputMask)`
+const BorderedInput = styled.input`
   border: 2px solid black;
   border-radius: 10px;
   padding: 10px;

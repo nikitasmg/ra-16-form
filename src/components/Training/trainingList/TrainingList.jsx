@@ -9,12 +9,26 @@ const TrainingList = () => {
     const [trainings, setTrainings] = useState([])
     const [active, setActive] = useState(false)
     const [currentItem, setCurrentItem] = useState(null)
+
     const handleSetItems = (item) => {
+        const candidateItem = trainings.find(el => new Date(el.date).valueOf() ===  new Date(item.date).valueOf())
+        if (candidateItem) {
+            const sumOfDistance = Number(item.distance) + Number(candidateItem?.distance)
+            const newTrainings = trainings.map(el => {
+                if (el.id === candidateItem.id) {
+                    return {...el, distance: sumOfDistance}
+                }
+            })
+            setTrainings(newTrainings)
+            return
+        }
         setTrainings(prev => [...prev, item])
     }
+
     const sortedTrainings = () => {
         return trainings.sort((a, b) => new Date(b.date) - new Date(a.date))
     }
+
     const deleteItem = (id) => {
         setTrainings(() => trainings.filter(el => el.id !== id))
     }

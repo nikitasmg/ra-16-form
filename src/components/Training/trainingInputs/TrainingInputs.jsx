@@ -15,7 +15,7 @@ const TrainingInputs = ({handleClick, initialItem}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        const data = {id:Date.now(), date, distance}
+        const data = {id:Date.now(), date: new Date(date).toLocaleDateString(), distance}
         if (date && distance) {
             handleClick(data)
             setDate('')
@@ -26,8 +26,8 @@ const TrainingInputs = ({handleClick, initialItem}) => {
     return (
         <Styled.Form onSubmit={(e) => handleSubmit(e)}>
             <Styled.Label>
-                <span>  Дата (ММ/ДД/ГГ) </span>
-                <Styled.BorderedInput mask='99/99/9999' placeholder='Дата'  value={date} onChange={e => setDate(e.target.value)}/>
+                <span>  Дата (ДД/ММ/ГГ) </span>
+                <Styled.BorderedInput  type='date' placeholder='Дата'  value={date} onChange={e => setDate(e.target.value)}/>
             </Styled.Label>
             <Styled.Label>
                 <span>Пройдено км</span>
